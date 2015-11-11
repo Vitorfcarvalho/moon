@@ -30,9 +30,15 @@ class Saida(GameObject):
         cena = Scene("faseagua")
         self.controller.load_scene(cena)
         self.controller.force_redraw = True
+        
+class Winner(GameObject):
+    def on_touch(self, other):
+        if not isinstance(other, Hero):
+            return
+        self.show_text(u"Parabéns, você ganhou!", duration=10)       
 
 def main():
-    cena = Scene("fase1")
+    cena = Scene("faseagua")
     simpleloop(cena, (800, 600))
 
 
